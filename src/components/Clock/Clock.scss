@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+@import '../functions.scss';
+
+.clock {
+  font-family: 'Staatliches', cursive;
+  font-size: rem-calc(120);
+  margin: 0 auto;
+  width: fit-content;
+
+  &-separator {
+    animation: wink 1s infinite alternate;
+  }
+}
+
+@keyframes wink {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
