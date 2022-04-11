@@ -3,20 +3,35 @@
 
 .clock {
   font-family: 'Staatliches', cursive;
-  font-size: rem-calc(120);
+  font-size: 15vw;
   margin: 0 auto;
   width: fit-content;
 
+  &-inner {
+    text-align: center;
+  }
+
   &-separator {
-    animation: wink 1s infinite alternate;
+    animation: wink 1s infinite ;
+  }
+
+  .date-inner {
+    font-size: 8vw;
+    text-align: center;
+  }
+
+  p {
+    margin: 0;
   }
 }
 
 @keyframes wink {
   0% {
-    opacity: 0;
+    opacity: 1;
   }
-
+  50% {
+    opacity: 0.1;
+  }
   100% {
     opacity: 1;
   }
