@@ -1,26 +1,54 @@
-import {useState} from 'react';
+import { useState, useEffect } from 'react';
 
 import './Weather.scss';
 
-const Weather = () => {
+const Weather = ({ className }) => {
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [weatherData, setWeatherData] = useState([]);
 
-  const [weatherData, setWeatherData] = useState('');
-  // const getWeatherData = async () => {
-  //   const response = await fetch('http://api.weatherapi.com/v1/current.json?key=8c653fd2e73149a1b07195217221104&q=guebwiller');
-  //   const weatherData = await response.json();
-  //   return weatherData;
-  // }
-  // const weatherData = getWeatherData()
-  //   .then(res => console.log(res))
-  //   .catch(err => {
-  //     console.log('Souci sur la météo')
-  //   })
+  useEffect(() => {
+    fetch(
+      'http://api.weatherapi.com/v1/current.json?key=8c653fd2e73149a1b07195217221104&q=guebwiller'
+    )
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          setWeatherData(result);
+          setIsLoaded(true);
+        },
+        (error) => {
+          setError(error);
+          setIsLoaded(true);
+        }
+      );
+  }, []);
 
-  return (
-    <div className='weather'>
-      <img src="" alt="" />
-    </div>
-  );
-}
+  if (error) {
+    return <div className='weather'>Erreur : {error.message}</div>;
+  } else if (!isLoaded) {
+    return (
+      <div className='weather'>
+        Chargement<span className='loading'>...</span>
+      </div>
+    );
+  } else {
+    console.log(weatherData);
+    return (
+      <div className={`weather ${className}`}>
+        <div className='row weather-row'>
+          <img
+            src={weatherData.current.condition.icon}
+            alt={weatherData.current.condition.text}
+          />
+          <div className='temperature'>{weatherData.current.temp_c}°C</div>
+        </div>
+        <div className='row row-center city-row'>
+          <div className='city'>{weatherData.location.name}</div>
+        </div>
+      </div>
+    );
+  }
+};
 
 export default Weather;

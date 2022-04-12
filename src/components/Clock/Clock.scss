@@ -1,14 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
 @import '../functions.scss';
 
 .clock {
-  font-family: 'Staatliches', cursive;
-  font-size: 15vw;
-  margin: 0 auto;
-  width: fit-content;
+  position: relative;
+  padding: rem-calc(0 16);
+  font-family: 'Comfortaa', cursive;
 
   &-inner {
     text-align: center;
+    font-size: rem-calc(76);
   }
 
   &-separator {
@@ -16,8 +15,8 @@
   }
 
   .date-inner {
-    font-size: 8vw;
     text-align: center;
+    font-size: rem-calc(24);
   }
 
   p {

@@ -1,0 +1,37 @@
+@import '../functions.scss';
+
+.search-searchform {
+  position: absolute;
+  bottom: rem-calc(32);
+  width: 100%;
+
+  form {
+    position: relative;
+  }
+
+  input#q {
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    padding: rem-calc(5 30);
+    height: rem-calc(60);
+    background-color: transparent;
+    border: none;
+    border-bottom: 3px solid white;
+    border-radius: 0 0 rem-calc(10 10);
+    color: white;
+    font-size: rem-calc(42);
+
+    &:active,
+    &:focus,
+    &:focus-visible {
+      outline: none;
+    }
+  }
+
+  button[type=submit]{
+    position: absolute;
+    right: 0;
+    opacity: 0;
+  }
+}

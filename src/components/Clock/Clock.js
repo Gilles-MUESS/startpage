@@ -2,28 +2,31 @@ import {useState, useEffect} from 'react';
 
 import './Clock.scss';
 import moment from 'moment';
+import 'moment/locale/fr';
 
 const Clock = ({className}) => {
+  moment.locale('fr');
+
   const [hours, setHours] = useState('');
   const [minutes, setMinutes] = useState('');
   const [date, setDate] = useState('');
 
   useEffect(() => {
     setInterval (() => {
-      setHours(moment().hours());
-      setMinutes(moment().minutes());
-      setDate(moment().format("DD/MM/YYYY"));
+      setHours(moment().format("kk"));
+      setMinutes(moment().format("mm"));
+      setDate(moment().format("dddd, DD MMMM YYYY"));
     }, 1000)
   }, [])
   
   return (
     <div className={`clock ${className}`}>
-      <p className='clock-inner'>
+      <div className='clock-inner'>
         <span className="hours">{hours}</span><span className='clock-separator'> : </span><span className="minutes">{minutes}</span>
-      </p>
-      <p className='date-inner'>
+      </div>
+      <div className='date-inner'>
         {date}
-      </p>
+      </div>
     </div>
   );
 }
