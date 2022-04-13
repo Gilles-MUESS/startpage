@@ -6,6 +6,7 @@
 
 .row {
   display: flex;
+  flex-direction: row;
   padding: rem-calc(10 30);
 }
 
@@ -19,4 +20,11 @@
 
 .pddbot {
   padding-bottom: rem-calc(32);
+}
+
+@media all and (max-width: 640px){
+  .row {
+    flex-direction: column;
+    padding: rem-calc(30 15);
+  }
 }
