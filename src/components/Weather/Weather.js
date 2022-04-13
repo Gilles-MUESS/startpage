@@ -9,7 +9,7 @@ const Weather = ({ className }) => {
 
   useEffect(() => {
     fetch(
-      'http://api.weatherapi.com/v1/current.json?key=8c653fd2e73149a1b07195217221104&q=guebwiller'
+      'https://api.weatherapi.com/v1/current.json?key=8c653fd2e73149a1b07195217221104&q=Guebwiller'
     )
       .then((res) => res.json())
       .then(
